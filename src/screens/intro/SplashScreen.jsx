@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { lightTheme } from "../../config/colors";
+
 
 const SplashScreen = () => {
 	const navigation = useNavigation();
@@ -13,7 +15,7 @@ const SplashScreen = () => {
 	return (
 		<>
 			<View style={styles.container}>
-				<Image source={require("../../assets/images/propoint.png")} />
+				<Image source={require("../../assets/images/splash/propoint.png")} />
 			</View>
 		</>
 	);
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor:"orange",
+		backgroundColor: lightTheme.generalBackground,
 	},
 });
 
