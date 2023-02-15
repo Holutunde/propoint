@@ -14,14 +14,23 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
+    
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
+      "config": {
+        "googleMapsApiKey": "AIzaSyC9_Bj8NCB9D5Nrn0RQ8dAkXtS-NmdmYqU"
+      },
       "supportsTablet": true,
       "bundleIdentifier": "com.example.propoint"
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyC9_Bj8NCB9D5Nrn0RQ8dAkXtS-NmdmYqU"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

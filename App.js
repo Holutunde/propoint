@@ -1,10 +1,10 @@
-import React from 'react'
-import { useFonts } from 'expo-font'
+import React from "react";
+import { useFonts } from "expo-font";
 // import { Provider, useSelector } from 'react-redux'
 // import createdStore from './store'
 // import { StyleSheet, Text, View } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
-import IntroStack from './src/navigation/introStack'
+import { NavigationContainer } from "@react-navigation/native";
+import IntroStack from "./src/navigation/introStack";
 // import { createDrawerNavigator } from '@react-navigation/drawer'
 // import { CartContextProvider } from './Util/Cartcontext'
 // import { getAsyncData } from './helpers/storage'
@@ -27,7 +27,7 @@ const App = () => {
     <NavigationContainer>
       <IntroStack />
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default App
+export default App;
