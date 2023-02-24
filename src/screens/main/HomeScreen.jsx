@@ -1,46 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import MapView,{ Marker } from 'react-native-maps';
-import { PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import Input from '../../components/input';
 import Constants from 'expo-constants';
 import { Ionicons } from '@expo/vector-icons'; 
 import NormalText from '../../components/Text'
 
+const { width, height } = Dimensions.get('window');
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-const Homescreen =()=> {
+
+const HomeScreen = () => {
   const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
   const [address, setAddress] = useState(null);
-  const [map, setMap]= useState(null)
 
+
+console.log(address)
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
-        console.log('Permission to access location was denied');
         return;
       }
 
-      let { coords } = await Location.getCurrentPositionAsync({});
-      setLocation(coords);
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+
 
       let address = await Location.reverseGeocodeAsync({
-        latitude: coords.latitude,
-        longitude: coords.longitude
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude
       });
       setAddress(address[0]);
     })();
   }, []);
 
-  // let text = 'Waiting..';
-  // if (errorMsg) {
-  //   text = errorMsg;
-  // } else if (location) {
-  //   text = `Latitude: ${location.latitude}, Longitude: ${location.longitude}`;
-  // }
- console.log(address)
+ 
+
   return (
     <View style={styles.container}>
       <View  style={styles.input}>
@@ -65,27 +64,32 @@ const Homescreen =()=> {
     
          </View>
       </View>
-  
-   
-      <MapView
-          provider={PROVIDER_GOOGLE}
+      {location && (
+        <MapView
           style={styles.map}
-          initialRegion={{
-            latitude: 5.14804,
-            longitude:  7.29546,
-            latitudeDelta: 10.5,
-            longitudeDelta: 12.4
+          region={{
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
           }}
         >
-        <Marker coordinate={location} title={address} />
+            <Marker
+              coordinate={{
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+              }}
+          
+            />
+        
         </MapView>
-
-      </View>
-  
+      )}
+    
+    </View>
   );
 }
 
-export default Homescreen
+export default HomeScreen
 
 const styles = StyleSheet.create({
   container: {
@@ -95,7 +99,6 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
       
   },
-  
   address: {
     fontSize: 14,
     textAlign: 'center',
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: '100%',
-    height: '60%',
+    height: '70%',
   },
   currentLocation:{
     flexDirection:'row',
@@ -112,8 +115,8 @@ const styles = StyleSheet.create({
     backgroundColor:'#F6F8F2',
     alignItems:'center',
     paddingLeft:10,
-    marginVertical:10
-  },
+    marginVertical:15
+ },
   location:{
     paddingLeft:10
   }
