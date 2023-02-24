@@ -63,7 +63,7 @@ const WelcomeScreen = ({navigation}) => {
       setCurrentSlideIndex(currentSlideIndex + 1);
     }
 	else{
-		navigation.navigate("Home")
+		navigation.navigate("Tab")
 	}
   };
 
@@ -72,7 +72,7 @@ const WelcomeScreen = ({navigation}) => {
     // const offset = lastSlideIndex * width;
     // ref?.current.scrollToOffset({offset});
     // setCurrentSlideIndex(lastSlideIndex);
-     navigation.replace('Home')
+     navigation.replace('Tab')
   };
 
   const Footer = () => {
