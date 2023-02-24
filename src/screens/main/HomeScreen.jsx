@@ -17,8 +17,6 @@ const HomeScreen = () => {
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState(null);
 
-
-console.log(address)
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -39,7 +37,6 @@ console.log(address)
   }, []);
 
  
-
   return (
     <View style={styles.container}>
       <View  style={styles.input}>
