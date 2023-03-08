@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   languageText: {
     color: '#474747',
     textAlign: 'center',
-    fontSize: 10,
+    fontSize: 13,
   },
   dropdownStyle: {
     borderWidth: 1,

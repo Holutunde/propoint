@@ -18,14 +18,8 @@ const TabStack = () => {
       headerShown: false,
       tabBarShowLabel:false,
       tabBarStyle:{
-        position: 'absolute',
-        bottom: 28,
-        left: 20,
-        right:20,
-        elevation:0,
         backgroundColor: '#01AB92',
-        borderRadius: 10,
-        height:60
+        height:70
       }
     }}
     >
@@ -35,7 +29,7 @@ const TabStack = () => {
         options={{
           
           tabBarIcon: ({focused})=>(
-            <View style = {{alignItems:'center', justifyContent:'center', top: 8}}>
+            <View style = {{alignItems:'center', justifyContent:'center'}}>
               <Entypo style={{color:focused?'#909090':'#ffffff' }} name="home" size={20}  />
               <Text style={{color:focused?'#909090':'#ffffff', paddingTop: 3}}>Home</Text>
             </View>
@@ -48,7 +42,7 @@ const TabStack = () => {
         options={{
           
           tabBarIcon: ({focused})=>(
-            <View style = {{alignItems:'center', justifyContent:'center', top: 8}}>
+            <View style = {{alignItems:'center', justifyContent:'center'}}>
               <MaterialCommunityIcons  style={{color:focused?'#909090':'#ffffff' }} name="access-point-network" size={20}  />
               <Text style={{color:focused?'#909090':'#ffffff', paddingTop: 3}}>Propoint</Text>
             </View>
@@ -61,7 +55,7 @@ const TabStack = () => {
         options={{
           
           tabBarIcon: ({focused})=>(
-            <View style = {{alignItems:'center', justifyContent:'center', top: 8}}>
+            <View style = {{alignItems:'center', justifyContent:'center'}}>
               <AntDesign style={{color:focused?'#909090':'#ffffff' }}  name="form" size={18}  />
               <Text style={{color:focused?'#909090':'#ffffff',paddingTop: 3}}>Survey</Text>
             </View>

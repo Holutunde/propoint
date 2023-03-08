@@ -1,147 +1,145 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, {useState} from 'react'
+import { StyleSheet, Text, View, TouchableWithoutFeedback, KeyboardAvoidingView, SafeAreaView, ScrollView , Keyboard} from 'react-native'
+import React, { useState } from 'react'
 import Constants from 'expo-constants';
 import NormalText from '../../components/Text';
-import DropDownPicker from 'react-native-dropdown-picker';
 import Residence from '../../components/Residence';
 import Zone from '../../components/Zone';
+import Simtype from '../../components/Simtype';
+import Networktype from '../../components/Networktype';
+import Makecall from '../../components/Makecall';
+import SendText from '../../components/SendText';
+import Browse from '../../components/Browse';
+import Input from '../../components/input';
 
 
 const SurveyScreen = () => {
-    const [selectedValue, setSelectedValue] = useState(null);
+  const [selectedValue, setSelectedValue] = useState(null);
   return (
-    <View style={styles.container}>
-       <View style={styles.headerContainer}>
-         <NormalText style={styles.headerText} >Inoder to improve the application efficiency, we would like you to fill the form and input the quality of network at your present location. Thank you</NormalText>
-       </View>
-       <View style={styles.formContainer}>
-       
-        <View style={{flexDirection:'row',width:300, marginTop:15, alignItems:'center'}}>
-            <NormalText style={styles.formText}>
-               State of Residence
-            </NormalText>
-            <Residence/>
+    <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : null}
+      >
+      <View style={styles.headerContainer}>
+        <NormalText style={styles.headerText} >Kindly input the quality of network at your present location. Thank you</NormalText>
+      </View>
+       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+           <ScrollView
+            contentContainerStyle={{
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+      <View style={styles.formContainer}>
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
+            State of Residence
+          </NormalText>
           <View>
-
-            <Residence/>
+             <Residence />
           </View>
+
         </View>
-        <View style={{flexDirection:'row',width:300, marginTop:15, alignItems:'center'}}>
-            <NormalText  style={styles.formText}>
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
             Geo-Pol Zone
-            </NormalText>
-            <Zone/>
+          </NormalText>
+          <Zone />
         </View>
-        <View style={{flexDirection:'row', marginTop:15}}>
-            <NormalText style={styles.formText}>
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
             What SIM Do You Use
-            </NormalText>
-            <DropDownPicker
-          items={[
-          { label: 'Option 1', value: 'option1' },
-          { label: 'Option 2', value: 'option2' },
-          { label: 'Option 3', value: 'option3' },
-        ]}
-        defaultValue={selectedValue}
-        placeholder="Select an option"
-        containerStyle={{ height: 20, width: 100}}
-        onChangeItem={(item) => setSelectedValue(item.value)}
-      />
+          </NormalText>
+          <Simtype />
         </View>
-        <View style={{flexDirection:'row', marginTop:15}}>
-            <NormalText>
-            What Network Type is Your Sim?
-*
-            </NormalText>
-            <DropDownPicker
-          items={[
-          { label: 'Option 1', value: 'option1' },
-          { label: 'Option 2', value: 'option2' },
-          { label: 'Option 3', value: 'option3' },
-        ]}
-        defaultValue={selectedValue}
-        placeholder="Select an option"
-        containerStyle={{margingLeft:40, height: 20, width: 100}}
-        onChangeItem={(item) => setSelectedValue(item.value)}
-      />
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
+            Your Network Type
+          </NormalText>
+          <Networktype />
         </View>
-        <View style={{flexDirection:'row', marginTop:15}}>
-            <NormalText>
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
             Do You Make Calls?
-
-            </NormalText>
-            <DropDownPicker
-          items={[
-          { label: 'Option 1', value: 'option1' },
-          { label: 'Option 2', value: 'option2' },
-          { label: 'Option 3', value: 'option3' },
-        ]}
-        defaultValue={selectedValue}
-        placeholder="Select an option"
-        containerStyle={{ height: 20, width: 100}}
-        onChangeItem={(item) => setSelectedValue(item.value)}
-      />
+          </NormalText>
+          <Makecall />
         </View>
-        <View style={{flexDirection:'row',marginTop:15}}>
-            <NormalText>
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
             Do You Send Text Messages?
-            </NormalText>
-            <DropDownPicker
-          items={[
-          { label: 'Option 1', value: 'option1' },
-          { label: 'Option 2', value: 'option2' },
-          { label: 'Option 3', value: 'option3' },
-        ]}
-        defaultValue={selectedValue}
-        placeholder="Select an option"
-        containerStyle={{ height: 20, width: 100}}
-        onChangeItem={(item) => setSelectedValue(item.value)}
-      />
+          </NormalText>
+         <SendText/>
         </View>
-        <View style={{flexDirection:'row',marginTop:15}}>
-            <NormalText>
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
             Do You Browse The Internet?
-
-            </NormalText>
-            <DropDownPicker
-          items={[
-          { label: 'Option 1', value: 'option1' },
-          { label: 'Option 2', value: 'option2' },
-          { label: 'Option 3', value: 'option3' },
-        ]}
-        defaultValue={selectedValue}
-        placeholder="Select an option"
-        containerStyle={{ height: 20, width: 100}}
-        onChangeItem={(item) => setSelectedValue(item.value)}
-      />
+          </NormalText>
+         <Browse/>
         </View>
-       </View>
-    </View>
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
+             Your network strength
+          </NormalText>
+         <Browse/>
+        </View>
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
+            Quality of service experience
+          </NormalText>
+         <Browse/>
+        </View>
+        <View style={styles.formSpace}>
+          <NormalText style={styles.formText}>
+            Do You Browse The Internet?
+          </NormalText>
+         <Browse/>
+        </View>
+        <View style={styles.commentSpace}>
+          <NormalText style={styles.formText}>
+            Kindly Give a Quick Comment On This SIM's Quality of Service
+          </NormalText>
+          <Input coverStyle={{maxWidth: '100%', marginTop:5, height: 50, multiline: true, padding: 0, color:'black'}}  placeholder='Please Do Express Yourself Clearly'/>
+        </View>
+      </View>
+       </ScrollView>
+          </TouchableWithoutFeedback>
+       </KeyboardAvoidingView>
+    </SafeAreaView>
   )
 }
 
 export default SurveyScreen
 
 const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        paddingTop: Constants.statusBarHeight,
-    },
-    headerContainer:{
-        justifyContent:'center',
-        maxWidth: '77%',
-    },
-    headerText:{
-        alignItems:'center',
-        fontSize: 15,
-        fontWeight:'300'
-    }, formContainer:{
-        maxWidth: '77%'
-    },
-     formText:{
-        fontSize: 14,
-        marginRight: 20
-     }
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: Constants.statusBarHeight,
+  },
+  headerContainer: {
+    justifyContent: 'center',
+  },
+  headerText: {
+    alignItems: 'center',
+    fontSize: 18,
+    fontWeight: '400',
+    textAlign:'center'
+  }, 
+  formContainer: {
+    maxWidth: '100%',
+  },
+  formText: {
+    fontSize: 14,
+  },
+  formSpace: {
+    flexDirection: 'row',
+    marginTop: 20,
+    justifyContent:'space-between',
+    paddingHorizontal: 40
+  },
+  commentSpace:{
+    flexDirection:'column',
+    paddingHorizontal: 50,
+    marginTop:20
+  }
 })

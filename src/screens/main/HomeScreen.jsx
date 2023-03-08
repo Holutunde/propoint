@@ -75,6 +75,7 @@ const HomeScreen = () => {
               coordinate={{
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
+                
               }}
           
             />
