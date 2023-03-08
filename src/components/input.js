@@ -46,8 +46,7 @@ const Input = ({
         position: "relative",
         backgroundColor: textInputBackground,
         ...coverStyle,
-      }}
-    >
+      }}>
       {LeftIcon && (
         <View style={{ marginRight: 10 }}>
           <LeftIcon />
@@ -66,10 +65,10 @@ const Input = ({
         multiline={multiline}
         editable={editable}
         style={{
-          color: "#dadee6",
+          color: "#474747",
           flex: 1,
           height: "100%",
-          paddingLeft: 5,
+          paddingLeft: 2,
           textAlignVertical: multiline ? "top" : "center",
           ...style,
         }}

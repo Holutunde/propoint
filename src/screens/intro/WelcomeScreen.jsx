@@ -186,7 +186,7 @@ const WelcomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   subtitle: {
-	color: lightTheme.textColor,
+  	color: lightTheme.textColor,
     fontSize: 16,
     marginTop: 16,
     maxWidth: '70%',
